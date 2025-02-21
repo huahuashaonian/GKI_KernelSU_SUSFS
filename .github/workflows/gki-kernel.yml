@@ -123,6 +123,7 @@ jobs:
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
           git clone https://github.com/WildPlusKernel/kernel_patches.git
           git clone https://github.com/firelzrd/bore-scheduler.git
+          git clone https://github.com/CachyOS/kernel-patches.git
 
       - name: Set CONFIG Environment Variable
         run: |
@@ -269,12 +270,9 @@ jobs:
             patch -p1 -F 3 < 0002-constgran-vanilla-max-android-5.10.patch
           
           elif [[ "${{ inputs.kernel_version }}" == "5.15" ]]; then
-            cp ../../kernel_patches/0001-linux5.15.y-bore5.1.0.patch ./
-            cp ../../kernel_patches/0002-constgran-vanilla-max-android-5.15.patch ./
+            cp ../../5.15/bore/0001-bore-sched.patch
             echo "Patch1"
-            patch -p1 -F 3 < 0001-linux5.15.y-bore5.1.0.patch
-            echo "Patch2"
-            patch -p1 -F 3 < 0002-constgran-vanilla-max-android-5.15.patch
+            patch -p1 -F 3 < 0001-bore-sched.patch
           
           elif [[ "${{ inputs.kernel_version }}" == "6.1" ]]; then
             cp ../../bore-scheduler/patches/legacy/linux-6.1-bore/0001-linux6.1.y-bore5.1.0.patch ./
