@@ -270,7 +270,7 @@ jobs:
             patch -p1 -F 3 < 0002-constgran-vanilla-max-android-5.10.patch
           
           elif [[ "${{ inputs.kernel_version }}" == "5.15" ]]; then
-            cp ../../5.15/bore/0001-bore-sched.patch
+            cp ../../kernel-patches/5.15/bore/0001-bore-sched.patch
             echo "Patch1"
             patch -p1 -F 3 < 0001-bore-sched.patch
           
